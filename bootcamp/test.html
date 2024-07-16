@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>팀 홈페이지</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('./path/to/your/full-background-image.jpg'); /* 전체 배경 이미지 경로 설정 */
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            height: 100vh; /* 화면 전체 높이 */
+        }
+
+        .content-wrapper {
+            flex: 1; /* 페이지 컨텐츠 영역이 남은 공간을 차지하도록 설정 */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+        }
+
+        .background-split {
+            display: flex;
+            height: 50%; /* body의 절반 높이 */
+        }
+
+        .left-half {
+            width: 50%;
+            background-image: url('./path/to/your/bottom-background-image.jpg'); /* 아래 반 배경 이미지 경로 설정 */
+            background-size: cover;
+            background-position: center;
+        }
+
+        .right-half {
+            width: 50%;
+            background-image: url('./path/to/your/bottom-background-image.jpg'); /* 아래 반 배경 이미지 경로 설정 */
+            background-size: cover;
+            background-position: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="content-wrapper">
+        <header>
+            <h1 class="team-title">일석이조</h1>
+            <h2 class="team-subtitle">JAVA 6기 조</h2>
+        </header>
+
+        <img src="./img/1.jpg.PNG" alt="팀 이미지" class="team-image">
+
+        <div class="members-container">
+            <div class="member">
+                <a href="member1.html">
+                    <img src="./img/1.jpg.PNG" alt="멤버 1 이미지">
+                    <div class="member-name">멤버 1</div>
+                </a>
+            </div>
+            <div class="member">
+                <a href="member2.html">
+                    <img src="./img/1.jpg.PNG" alt="멤버 2 이미지">
+                    <div class="member-name">멤버 2</div>
+                </a>
+            </div>
+            <div class="member">
+                <a href="member3.html">
+                    <img src="./img/1.jpg.PNG" alt="멤버 3 이미지">
+                    <div class="member-name">멤버 3</div>
+                </a>
+            </div>
+            <div class="member">
+                <a href="member4.html">
+                    <img src="./img/1.jpg.PNG" alt="멤버 4 이미지">
+                    <div class="member-name">멤버 4</div>
+                </a>
+            </div>
+            <div class="member">
+                <a href="member5.html">
+                    <img src="./img/1.jpg.PNG" alt="멤버 5 이미지">
+                    <div class="member-name">멤버 5</div>
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
