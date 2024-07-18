@@ -20,13 +20,13 @@
 
     // For Firebase JS SDK v7.20.0 and later, measurementId is optional
     const firebaseConfig = {
-      apiKey: "AIzaSyDSyexqcj6329xjWKKCgFIm2zc_OV0uj4I",
-      authDomain: "sparta-59946.firebaseapp.com",
-      projectId: "sparta-59946",
-      storageBucket: "sparta-59946.appspot.com",
-      messagingSenderId: "1011737346514",
-      appId: "1:1011737346514:web:dfcde3c5acda4c1e29c80b",
-      measurementId: "G-X73Z3WG430"
+      apiKey: "AIzaSyCbguK8BikWqc0GgkRxScWa9npGpkYKnIM",
+      authDomain: "sparata.firebaseapp.com",
+      projectId: "sparata",
+      storageBucket: "sparata.appspot.com",
+      messagingSenderId: "883912642411",
+      appId: "1:883912642411:web:38fab7e0682833eab9462e",
+      measurementId: "G-2YHJM9PCHC"
     };
 
 
@@ -38,18 +38,18 @@
       let title = $('#title').val();
       let content = $('#content').val();
       let date = $('#date').val();
-      
+
       if (!title && !content && !date) {
-				alert('내용을 입력하세요.');
-				return;
-			}
+        alert('내용을 입력하세요.');
+        return;
+      }
 
       let doc = {
         'title': title,
         'content': content,
         'date': date
       };
-      await addDoc(collection(db, "mypage"), doc);
+      await addDoc(collection(db, "ssj"), doc);
       alert('저장 완료!');
       window.location.reload();
     })
@@ -64,7 +64,7 @@
       $('#msg').text(mise)
     })
 
-    let docs = await getDocs(collection(db, "mypage"));
+    let docs = await getDocs(collection(db, "ssj"));
     docs.forEach((doc) => {
       let row = doc.data();
       let title = row['title'];
@@ -92,7 +92,7 @@
   <div class="frame">
     <nav class="navigator">
       <ul>
-        <li><a class="nav-menu" href="main.html">HOME</a></li>
+        <li><a class="nav-menu" href="file:///C:/Users/user/Desktop/main.html">HOME</a></li>
       </ul>
     </nav>
 
@@ -105,7 +105,7 @@
     </div>
 
     <div class="profile-section">
-      <img class="profile_picture" src="file:///C:/Users/user/Desktop/%EC%86%90%EC%8A%B9%EC%A7%84.jpg" />
+      <img class="profile_picture" src="file:///C:/Users/user/Desktop/%EC%86%90%EC%8A%B9%EC%A7%84.png" />
 
       <div class="comment">
         <h1 class="Languages">COMMENT</h1>
@@ -146,7 +146,6 @@
     </div>
     <div class="mybtn">
       <button id="postingbtn" type="button" class="btn btn-primary">기록하기</button>
-      <button type="button" class="btn btn-outline-primary">닫기</button>
     </div>
   </div>
   <div class="mycards">
