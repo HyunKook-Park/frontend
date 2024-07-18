@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>자기소개페이지</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+    <link rel="stylesheet" href="kook.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <script type="module">
+        // Firebase SDK 라이브러리 가져오기
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
+        import { getFirestore } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+        import { collection, addDoc } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+        import { getDocs } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+
+        // Firebase 구성 정보 설정
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        const firebaseConfig = {
+            apiKey: "AIzaSyCbguK8BikWqc0GgkRxScWa9npGpkYKnIM",
+            authDomain: "sparata.firebaseapp.com",
+            projectId: "sparata",
+            storageBucket: "sparata.appspot.com",
+            messagingSenderId: "883912642411",
+            appId: "1:883912642411:web:38fab7e0682833eab9462e",
+            measurementId: "G-2YHJM9PCHC"
+        };
+
+        // Firebase 인스턴스 초기화
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        $(document).ready(async function () {
+            $("#postingbtn").click(async function () {
+                let name = $('#name').val();
+                let star = $('#star').val();
+                let comment = $('#comment').val();
+                let doc = {
+                    'name': name,
+                    'star': star,
+                    'comment': comment
+                };
+                await addDoc(collection(db, "profile"), doc); // profile 라는 컬렉션이름으로 doc에 대한 db 생성
+                alert('저장 완료!'); // 클릭하게 되면 저장  완료 
+                window.location.reload(); // 클릭 후 저장 문구가 뜨면 윈도우 재로딩
+            })
+                
+            let docs = await getDocs(collection(db, "profile"));
+            docs.forEach((doc, index) => {
+                let row = doc.data();
+
+                let name = row['name'];
+                let star = row['star'];                 // 변수 형태 : object 
+                let comment = row['comment'];
+
+                let temp_html = ` 
+                <div class="mycard col-md-6">
+                    <div class="card border-dark mb-3">
+                        <div class="card-header">${name}</div>
+                        <div class="card-body">
+                            <h5 class="card-title">${star}</h5>
+                            <p class="card-text">${comment}</p>
+                        </div>
+                    </div>
+                </div>`;
+                $('#mycard-container').append(temp_html);
+
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <div class="frame">
+        <nav class="navigator">
+            <ul>
+                <li><a class="nav-menu" href="./main.html">HOME</a></li>
+            </ul>
+        </nav>
+        <div class="title-comment">
+            <img class="image" src="" />
+            <h1>
+                안녕하세요!<br />
+                백엔드 개발자를 꿈꾸는 java_6기 <br />박현국입니다.
+            </h1>
+        </div>
+
+        <div class="profile-section">
+            <img class="profile_picture" src="./img/현국.jpg" />
+            <div class="comment">
+                <h1 class="Languages">COMMENT</h1>
+                <h3>백앤드 과정 중 나의 목표</h3>
+                <h4>
+                    팀원들과의 협업을 통한 경험을 많이 쌓아 실전에서 잘 활용하겠습니다!
+                </h4>
+
+                <h3>TMI</h3>
+                <h4>: 모두 화이팅! </h4>
+                <h3>MBTI</h3>
+                <h4>ESTP</h4>
+                <h2>사용한 기술<br />HTML / JavaScript / CSS / Firebase</h2>
+                <a href="https://hyunkook.tistory.com" class="card-link">블로그 링크</a>
+                <a href="https://github.com/HyunKook-Park" class="card-link">깃허브 링크</a>
+                <h3 style="text-align: center;">싸우면 반드시 이긴다.</h3>
+            </div>
+        </div>
+
+        <div class="mypostingbox">
+            <h5 class="postingbox-title">방명록</h5>
+            <div class="form-floating mb-3">
+                <input type="email" class="form-control" id="name" placeholder="이름"><label
+                    for="floatingInput">이름</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="email" class="form-control" id="comment" placeholder="내용"><label
+                    for="floatingInput">내용</label>
+                <div class="input-group mb-3">
+                    <label class="input-group-text" for="inputGroupSelect01">별점</label>
+                    <select class="form-select" id="star">
+                        <option selected>별점선택</option>
+                        <option value="⭐">⭐</option>
+                        <option value="⭐⭐">⭐⭐</option>
+                        <option value="⭐⭐⭐">⭐⭐⭐</option>
+                        <option value="⭐⭐⭐⭐">⭐⭐⭐⭐</option>
+                        <option value="⭐⭐⭐⭐⭐">⭐⭐⭐⭐⭐</option>
+                    </select>
+                </div>
+                <div class="mybtn">
+                    <button id="postingbtn" type="button" class="btn btn-dark">확인</button>
+                    <button type="button" class="btn btn-outline-dark">닫기</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="mycard-container row" id="mycard-container">
+        </div>
+    </div>
+</body>
+
+</html>
